@@ -1,7 +1,7 @@
 create sequence hibernate_sequence start 1 increment 1;
 
 create table valves (
-    id int(8),
+    id int8 not null,
     biu varchar(255),
     name varchar(255),
     assembly varchar(255),
