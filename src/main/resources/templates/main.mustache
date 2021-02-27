@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Armatura TEC</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        body{
+            background: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+         <h2>Введите название БИУ или название для поиска </h2>
+         <h4>(Для всего списка по сборке перед ее назнанием поставте ??. Например: ??330)</h4>
+        <div>
+            <form method="post">
+                <input type="text" name="inputString" autofocus min="2">
+                <input type="submit" id="submit" value="EnTeR">
+            </form>
+        </div>
+        <br>
+        <table cellpadding="5" border="2" text-align="center">
+            <tr>
+                <th>БИУ</th>
+                <th>Название арматуры</th>
+                <th>Сборка</th>
+                <th>Шкаф</th>
+                <th>Позиция</th>
+                <th>Где ? находится</th>
+            </tr>
+            {{#valves}}
+            <tr>
+                <td>{{biu}}</td>
+                <td>{{name}}</td>
+                <td>{{assembly}}</td>
+                <td>{{locker}}</td>
+                <td>{{position}}</td>
+                <td>{{location}}</td>
+            </tr>
+            {{/valves}}
+        </table>
+    </div>
+</body>
+</html>
