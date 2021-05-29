@@ -5,18 +5,40 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style>
         body{
-            background: blanchedalmond;
+            background: url(foneSborka.jpg);
+            color: darkblue;
+        }
+        header{    text-align: center;    }
+        h1{  color: red;    }
+        a{
+            color: yellowgreen;
+            float: right;
+            text-align: right;
+        }
+        .main{
+            text-align: center;
+        }
+        table{
+            display: compact;
+            margin: auto;
+            color: black;
+            background: darkkhaki;
         }
     </style>
 </head>
 <body>
-    <div class="main">
-         <h2>Введите название БИУ или название для поиска </h2>
-         <h4>(Для всего списка по сборке перед ее назнанием поставте ??. Например: ??330)</h4>
-        <div>
+      <header>
+          <h1>Арматура КИП ТЕЦ-5</h1>
+      </header>
+     <div class="main">
+      <div>
             <form method="post">
                 <input type="text" name="inputString" autofocus min="2">
-                <input type="submit" id="submit" value="EnTeR">
+                <br>
+                <br>
+                <input type="submit" name="act" value="Арматура">
+                <input type="submit" name="act" value="Сборка">
+                <input type="submit" name="act" value="Блокировка">
             </form>
         </div>
         <br>
@@ -28,6 +50,7 @@
                 <th>Шкаф</th>
                 <th>Позиция</th>
                 <th>Где ? находится</th>
+                <th>Блокировка</th>
             </tr>
             {{#valves}}
             <tr>
@@ -40,6 +63,6 @@
             </tr>
             {{/valves}}
         </table>
-    </div>
+     </div>
 </body>
 </html>

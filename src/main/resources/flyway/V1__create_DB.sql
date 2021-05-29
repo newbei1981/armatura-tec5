@@ -1,12 +1,10 @@
-create sequence hibernate_sequence start 1 increment 1;
-
-create table valves (
-    id int8 not null,
-    biu varchar(255),
-    name varchar(255),
-    assembly varchar(255),
-    locker varchar(255),
-    position varchar(255),
-    location varchar(255),
-    primary key (id)
+create table if not exists valves (
+                                      id bigint not null auto_increment,
+                                      biu varchar(30),
+                                      name varchar(255),
+                                      assembly varchar(50),
+                                      locker varchar(10),
+                                      position varchar(10),
+                                      location varchar(40),
+                                      primary key (id)
 );
