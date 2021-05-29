@@ -1,6 +1,5 @@
 package com.armatura.controller;
 
-import com.armatura.io.CreationDbFromFiles;
 import com.armatura.model.Valve;
 import com.armatura.repository.ValvesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +15,10 @@ import java.util.Map;
 public class ViewController {
 
     private ValvesRepository valvesRepository;
-    private CreationDbFromFiles createDB;
 
     @Autowired
-    ViewController(ValvesRepository valvesRepository, CreationDbFromFiles creatDB){
+    ViewController(ValvesRepository valvesRepository){
         this.valvesRepository = valvesRepository;
-        this.createDB = creatDB;
     }
 
     @GetMapping("/valves")
@@ -33,20 +30,25 @@ public class ViewController {
     }
 
     @PostMapping("/valves")
-    public String inputString(@RequestParam String inputString, Map<String,Object> model){
-        if (inputString.equalsIgnoreCase("create")) createDB.createDB();
-         else {
-             if (inputString.startsWith("??")) {
-                 List<Valve> valves = valvesRepository.findAllByAssemblyIsContainingIgnoreCase(inputString.substring(3));
-                 model.put("valves", valves);
-             }
-             else {
-                 List<Valve> valves = valvesRepository.findAllByBiuIsContainingIgnoreCase(inputString);
-                 valves.addAll(valvesRepository.findAllByNameIsContainingIgnoreCase(inputString));
-                 model.put("valves", valves);
-             }
+    public String inputString(@RequestParam String inputString,
+                              @RequestParam String act,
+                              Map<String,Object> model){
 
-         }
+        List<Valve> valves;
+        switch (act){
+           case "Арматура":
+               valves = valvesRepository.findAllByBiuIsContainingIgnoreCase(inputString);
+               valves.addAll(valvesRepository.findAllByNameIsContainingIgnoreCase(inputString));
+               model.put("valves", valves);
+               break;
+           case "Сборка":
+               valves = valvesRepository.findAllByAssemblyIsContainingIgnoreCase(inputString);
+               model.put("valves", valves);
+               break;
+           case "Блокировка":
+               // Поиск и вывод арматуры с блокировками
+               break;
+        }
         return "main";
     }
 }
