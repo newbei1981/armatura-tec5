@@ -26,12 +26,12 @@ public class AdminController {
         this.createDB=createDB;
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/adminn")
     public String showPanel(){
-        return "/admin";
+        return "admin";
     }
 
-    @PostMapping("/admin")
+    @PostMapping("/adminn")
     public String someOperationWithData(
             @RequestParam String act,
             @RequestParam("file") MultipartFile file
@@ -45,7 +45,7 @@ public class AdminController {
              break;
            }
         }
-        return "/admin";
+        return "admin";
     }
 
     private void copyFileUsingStream(InputStream is, String dest) throws IOException {
