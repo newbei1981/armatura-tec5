@@ -26,12 +26,12 @@ public class AdminController {
         this.createDB=createDB;
     }
 
-    @GetMapping("/adminn")
+    @GetMapping("/admin")
     public String showPanel(){
         return "/admin";
     }
 
-    @PostMapping("/adminn")
+    @PostMapping("/admin")
     public String someOperationWithData(
             @RequestParam String act,
             @RequestParam("file") MultipartFile file
