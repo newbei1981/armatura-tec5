@@ -18,14 +18,13 @@ public class AdminController {
     private final ValvesRepository valvesRepository;
     private final CreationDbFromFiles createDB;
 
+    private final String uploadPath = "src/main/resources/static/valves/";
+    
     @Autowired
     AdminController(ValvesRepository valvesRepository, CreationDbFromFiles createDB){
         this.valvesRepository=valvesRepository;
         this.createDB=createDB;
     }
-
-    @Value("${upload.path}")
-    private String uploadPath;
 
     @GetMapping("/adminn")
     public String showPanel(){
