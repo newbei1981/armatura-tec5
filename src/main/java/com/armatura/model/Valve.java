@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity(name="valves")
 public class Valve {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     @Column(name = "biu")
